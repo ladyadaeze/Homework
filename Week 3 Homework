@@ -1,0 +1,25 @@
+characters = input("Enter characters \n")
+
+wordlist = list(characters)
+
+wordfreq = {}
+for w in wordlist:
+    if w not in wordfreq:
+        wordfreq[w] = 0
+    wordfreq[w] = wordfreq[w]+1
+
+
+phrase = input("Enter phrase \n")
+letters = list(phrase)
+found_all = True
+for l in letters:
+    if l not in wordfreq:
+        found_all = False
+        break
+    count = wordfreq[l]
+    if count == 0:
+        found_all = False
+        break
+    wordfreq[l] = count - 1
+
+print("Result is {}".format(found_all))
